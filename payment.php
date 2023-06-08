@@ -67,6 +67,15 @@ $show=$sql->fetch_assoc();
 
 require_once 'config.php';
 include('includes/navbar.php');
+
+
+session_start(); // Start the session
+
+// Display the session data
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
 ?>
     <!-- The Modal -->
     <br><br><br><br>

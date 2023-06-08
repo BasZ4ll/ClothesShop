@@ -4,6 +4,8 @@
     }
 .card {
  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ width: 100%;
+ height: 100%;
 }
 .footer-cta {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
@@ -91,9 +93,16 @@ $res = mysqli_query($conn, $sql);
 
 <br><br>
 <?php include('cateta.php') ?> 
-    <div class="row">
+  <div class="row">
 
     <?php while ($row = mysqli_fetch_array($res)) { ?>
+      <?php
+   $a = $row['product_price'];  //ราคาสินค้า 
+   $b = $row['product_discount'];   //ส่วนลด 5%
+   
+   $discount = $a*$b/100;  //คำนวณส่วนลด
+  $price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
+?>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card" data-toggle="modal" data-target="#myModal<?php echo $row["product_id"]; ?>">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
@@ -103,7 +112,10 @@ $res = mysqli_query($conn, $sql);
             <a href="#!">
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100">
-                  <h5><span class="badge ms-2">NEW</span></h5>
+                <?php if ($row['product_discount'] > 0) { ?>
+                  <h5><span class="badge ms-2">ลด <?php echo $row['product_discount']; ?> %</span></h5>
+                  <?php } else { ?>
+                  <?php } ?>
                 </div>
               </div>
               <div class="hover-overlay">
@@ -118,7 +130,13 @@ $res = mysqli_query($conn, $sql);
             <a href="" class="text-reset ">
               <p><?php echo $row["product_tag"]; ?></p>
             </a>
+            <?php if ($row['product_discount'] > 0) { ?>
+            <a class="text-reset"><s><?php echo number_format($row['product_price'], 2) ?> บาท</s></a>
+            <h6 class="mb-3 price"><?php echo number_format($price, 2) ?> บาท</h6>
+            <?php } else { ?>
+              <br><br>
             <h6 class="mb-3 price"><?php echo number_format($row['product_price'], 2) ?> บาท</h6>
+            <?php } ?>
           </div>
             <form action="includes/addcart.php" method="post">
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
@@ -138,7 +156,7 @@ $res = mysqli_query($conn, $sql);
                 </div>
               <h3><?php echo $row["product_name"]; ?></h3>
               <p><?php echo $row["product_detail"]; ?></p>
-              <h2><?php echo $price;
+              <h2><?php 
                             echo " ";
                             echo number_format($row['product_price'], 2);
                             echo " ";
