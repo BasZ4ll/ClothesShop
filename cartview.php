@@ -61,10 +61,19 @@ include('includes/navbar.php')?>
         <?php $i=1;
         while($rows=mysqli_fetch_array($result1)){?>
         <tr>
+            <?php 
+            
+    $a = $rows['product_price'];  //ราคาสินค้า 
+    $b = $rows['product_discount'];   //ส่วนลด 5%
+    
+    $discount = $a*$b/100;  //คำนวณส่วนลด
+    $product_price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
+  
+    ?>
             <td><?php echo $i;?></td>
             <td style="width:100px"><img src="assets/image/store/<?php echo $rows['product_image']?>" style="width:100px"></td>
             <td><?php echo $rows['product_name']?></td>
-            <td><?php echo number_format($rows['product_price'],2)?></td>
+            <td><?php echo number_format($product_price,2)?></td>
             <td><?php echo $rows['cart_date']?></td>
             <td> <a href="includes/delcart.php?cart_id=<?php echo $rows['cart_id']?>" class="delcart"style="font-size:23px"><i class="fas fa-times" style="color:red"></i></a></td>
         </tr>   

@@ -5,20 +5,7 @@
 <?php 
 
 $mem_id =$_SESSION['mem_id'];
-$datetime=date("Y-m-d H:i:s");
-    if($_REQUEST['data']=='confirm') {
-   
-        $order= date('dmyHis');
-        $mem_address=$_REQUEST['mem_address'];
-        $shipping= $_REQUEST['shipping'];
-        $summy= $_SESSION['summy'];
-     
-         $sql= "INSERT INTO `orders`(`order_id`, `order_number`, `mem_id`, `address`, `order_shipping`, `price_total`, `order_status`, `order_date`) VALUES ('', '$order', '$mem_id', '$mem_address', '$shipping', '$summy', '0', '$datetime')";
-        $res=mysqli_query($conn,$sql);
-        $row=mysqli_fetch_array($res);
-    
-      
-    }  
+$datetime=date("Y-m-d H:i:s");  
 
 
 if($_REQUEST['data']=='cancel'){
@@ -38,7 +25,7 @@ if($_REQUEST['data']=='cancel'){
     <link rel="stylesheet" href="node_modules/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-    <title>SmartWatch Shop</title>
+    <title>ClothesShop</title>
 </head>
 <style>
     body{
@@ -81,7 +68,7 @@ include('includes/navbar.php');
     <br><br><br><br>
     <div class="container" style="background-color:white;">
     <br><h3><center><?php echo $confirm ?></h3><br>
-    <form  class="form-horizontal" id="myform1" name="form" action="?data=confirm" method="post" enctype="multipart/form-data">
+    <form  class="form-horizontal" id="myform1" name="form" action="action_order.php" method="post" enctype="multipart/form-data">
     <div class="table-responsive">
     <table class="table table-striped table-bordered" >
         <tr>
@@ -100,19 +87,27 @@ include('includes/navbar.php');
              $sqlins="INSERT INTO `order_detail`(`order_detail_id`, `order_number`, `product_id`, `product_price`) VALUES ('','$order','$_SESSION[product_id]','$_SESSION[product_price]')";
             $resins=mysqli_query($conn,$sqlins);
             $rowins=mysqli_fetch_array($resins);
+
+            //delete cart
         
             $conn->query("DELETE FROM cart WHERE mem_id = '$mem_id'");
             Alert('ทำการสั่งซื้อเรียบร้อย','orderhistory.php');
 
         }
  
+        $a = $rows['product_price'];  //ราคาสินค้า 
+        $b = $rows['product_discount'];   //ส่วนลด 5%
+        
+        $discount = $a*$b/100;  //คำนวณส่วนลด
+        $product_price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
+      
      
     //$products_prices=$_SESSION['product_price'];
    // $productsx_prices = array($_SESSION['product_price']);?>
             <td><?php echo $i;?></td>
             <td style="width:100px"><img src="assets/image/store/<?php echo $rows['product_image']?>" style="width:100px"></td>
             <td><?php echo $rows['product_name']; $mem_address=$rows['mem_address'];?></td>
-            <td><?php echo number_format($rows['product_price'],2)?></td>
+            <td><?php echo number_format($product_price,2)?></td>
             <td><?php echo $rows['cart_date']?></td><?php 
            $_SESSION['product_id']=$rows['product_id'];
            $_SESSION['product_price']=$rows['product_price'];?>
@@ -153,7 +148,7 @@ include('includes/navbar.php');
                 </div>
 
              
-    <div class="text-right"><button type="submit" name="submits"class="btn btn-info btn-grad btn-xl" onClick="return confirm ('ยืนยันการสั่งซื้อ');">ยืนยันการสั่งซื้อ</button>&nbsp;
+    <div class="text-right"><button type="submit" name="submit"class="btn btn-info btn-grad btn-xl">ยืนยันการสั่งซื้อ</button>&nbsp;
     <button type="button" class="btn btn-danger btn-grad" onClick="window.location='?data=cancel';">ยกเลิกรายการทั้งหมด</button></div>
 
     <br>

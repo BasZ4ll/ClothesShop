@@ -123,14 +123,12 @@ if($show2['order_shipping']==50){
                 <tr>
                 <?php 
                     //ราคารวมระหว่างค่าจัดส่งกับ จำนวนสินค้า
-                    $totalshipping= $showcount['countorder_number'] * $show2['order_shipping'];
-                    $totalsum=$totalshipping+$show2['price_total'];
-                    $_SESSION['price_totals']=$totalsum;
+                    $totalshipping = $show2['price_total'] + $show2['order_shipping'];
                  ?>
-                    <td colspan="5"  style="text-align: right;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5>ค่าจัดส่ง: <span class="text-success">(<?php  echo $shipping ?>)</span></h5></td><td   style="padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5><?php echo number_format($totalshipping,2)?> บาท</h5></td>
+                    <td colspan="5"  style="text-align: right;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5>ค่าจัดส่ง: <span class="text-success">(<?php  echo $shipping ?>)</span></h5></td><td   style="padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5><?php echo number_format($show2['order_shipping'],2)?> บาท</h5></td>
                 </tr>
                 <tr>
-                    <td colspan="5"   style="text-align: right;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px; "><h5 style="    color: green;">รวมค่าใช้จ่ายที่ต้องชำระทั้งหมด: </h5></td><td  style="padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5 style="    color: green;"><?php echo number_format($totalsum,2) ?> บาท</h5></td>
+                    <td colspan="5"   style="text-align: right;padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px; "><h5 style="    color: green;">รวมค่าใช้จ่ายที่ต้องชำระทั้งหมด: </h5></td><td  style="padding-bottom: 10px;padding-top: 10px;padding-left: 10px;padding-right: 10px;"><h5 style="    color: green;"><?php echo number_format($totalshipping,2) ?> บาท</h5></td>
                 </tr>
                 
                

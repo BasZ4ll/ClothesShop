@@ -68,14 +68,8 @@ $show=$sql->fetch_assoc();
 require_once 'config.php';
 include('includes/navbar.php');
 
-
-session_start(); // Start the session
-
-// Display the session data
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
+//ราคารวมระหว่างค่าจัดส่งกับ จำนวนสินค้า
+$totalshipping = $show['price_total'] + $show['order_shipping'];
 ?>
     <!-- The Modal -->
     <br><br><br><br>
@@ -96,7 +90,7 @@ echo "</pre>";
     </div>
     <div class="form-group col-md-6">
       <label for="pricetotal">จำนวนเงินที่ต้องชำระ</label>
-      <input type="text" class="form-control" id="pricetotal" name="pricetotal" placeholder="pricetotal" value="<?php echo number_format($_SESSION['price_totals'],2); ?>"readonly>
+      <input type="text" class="form-control" id="pricetotal" name="pricetotal" placeholder="pricetotal" value="<?php echo number_format($totalshipping,2); ?>"readonly>
     </div>
     <div class="form-group col-md-6">
       <label for="payment_price">จำนวนเงินที่โอน</label>

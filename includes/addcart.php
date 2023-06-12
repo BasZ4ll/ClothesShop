@@ -14,7 +14,12 @@ if(isset($mem_id)){
     $sqlse="SELECT * FROM product WHERE product_id = $product_id";
     $resultse= mysqli_query($conn,$sqlse);
     $rowse=mysqli_fetch_array($resultse);
-    $product_price=$rowse['product_price'];
+
+    $a = $rowse['product_price'];  //ราคาสินค้า 
+    $b = $rowse['product_discount'];   //ส่วนลด 5%
+    
+    $discount = $a*$b/100;  //คำนวณส่วนลด
+    $product_price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
   
     if($carttotal==4){
         echo '<script>alert("เลือกสินค้าได้มากสุด4ชิ้น") </script>';
