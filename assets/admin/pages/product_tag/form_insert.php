@@ -47,15 +47,7 @@ include('../../connect.php');
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Product Type Management</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item active">Setting</a></li>
-              <li class="breadcrumb-item"><a href="../stores">Product Type Management</a></li>
-              <li class="breadcrumb-item active">Add Product Type</li>
-            </ol>
+            <h1>จัดการข้อมูลประเภทสินค้า</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -67,7 +59,7 @@ include('../../connect.php');
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title d-inline-block">Add Product Type</h3>
+          <h3 class="card-title d-inline-block">เพิ่มประเภทสินค้า</h3>
         </div>
         <!-- /.card-header -->
         <form role="form" action="insert.php" method="post"enctype="multipart/form-data"id="formRegister">
@@ -76,16 +68,16 @@ include('../../connect.php');
             <table>
 
               <div class="form-group col-md-4">
-                  <label for="product_tag_id">Product Type ID</label>
+                  <label for="product_tag_id">ไอดีประเภทสินค้า</label>
                   <input type="text" class="form-control" id="product_tag_id" name="product_tag_id">
               </div>
               <div class="form-group col-md-4">
-                  <label for="product_tag_name">Product Type Name</label>
+                  <label for="product_tag_name">ชื่อประเภทสินค้า</label>
                   <input type="text" class="form-control" id="product_tag_name" name="product_tag_name">
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-6">
                   <label for="submit" style="opacity: 0;">submit</label><br>
-                  <input type="submit" class="btn btn-success"name="submit">
+                  <input type="submit" class="btn btn-success"name="submit" value="บันทึกข้อมูล">
               </div>
 
             </table>
@@ -132,35 +124,3 @@ include('../../connect.php');
 
 </body>
 </html>
-<script>
-  //formRegister
-  $( document ).ready(function(){
-            $('#formRegister').validate({
-                rules:{
-                  product_type_name:'required',
-                  product_type_id: {
-                        required: true,
-                        number: true,
-                    },
-                },
-                messages:{
-                    product_type_name: 'กรุณากรองชื่อประเถทสินค้า',
-                  product_type_id: {
-                        number:'กรอกแต่ตัวเลขเท่านั้น',
-                        required: 'กรุณากรองรหัสประเภทสินค้า',
-                    },
-                },
-                errorElement: 'div',
-                errorPlacement: function ( error, element ){
-                    error.addClass( 'invalid-feedback' )
-                    error.insertAfter( element )
-                },
-                highlight: function ( element, errorClass, validClass ){
-                    $( element ).addClass( 'is-invalid' ).removeClass( 'is-valid' )
-                },
-                unhighlight:function ( element, errorClass, validClass ){
-                    $( element ).addClass( 'is-valid' ).removeClass( 'is-invalid' )
-                }
-            });
-        })
-</script>

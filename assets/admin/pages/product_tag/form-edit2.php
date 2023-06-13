@@ -51,15 +51,7 @@ $row=mysqli_fetch_array($res);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Product Tag Management</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item active">Setting</a></li>
-              <li class="breadcrumb-item"><a href="../stores">Product Tag Management</a></li>
-              <li class="breadcrumb-item active">Edit Product Tag</li>
-            </ol>
+            <h1>จัดการข้อมูลประเภทสินค้า</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -71,7 +63,7 @@ $row=mysqli_fetch_array($res);
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title d-inline-block">Edit Product Tag</h3>
+          <h3 class="card-title d-inline-block">แก้ไขประเภทสินค้า</h3>
         </div>
         <!-- /.card-header -->
         <form role="form" action="update.php" method="post"enctype="multipart/form-data"id="formRegister">
@@ -80,12 +72,12 @@ $row=mysqli_fetch_array($res);
             <table>
 
               <div class="form-group col-md-4">
-                  <label for="product_tag_id">Product Tag ID</label>
+                  <label for="product_tag_id">ไอดีประเภทสินค้า</label>
                   <input type="hidden" class="form-control" id="product_tag_id" name="product_tag_id" value="<?php echo $row['product_tag_id']?>" >
                   <input type="number" class="form-control" id="product_tag_id" name="product_tag_id" value="<?php echo $row['product_tag_id']?>" disabled>
               </div>
               <div class="form-group col-md-4">
-                  <label for="product_tag_name">Product Tag Name</label>
+                  <label for="product_tag_name">ชื่อประเภทสินค้า</label>
                   <input type="text" class="form-control" id="product_tag_name" name="product_tag_name"value="<?php echo $row['product_tag_name']?>">
               </div>
               <div class="form-group col-md-2">
@@ -138,35 +130,3 @@ $row=mysqli_fetch_array($res);
 
 </body>
 </html>
-<script>
-  //formRegister
-  $( document ).ready(function(){
-            $('#formRegister').validate({
-                rules:{
-                  product_tag_name:'required',
-                  product_tag_id: {
-                        required: true,
-                        number: true,
-                    },
-                },
-                messages:{
-                    product_tag_name: 'กรุณากรองชื่อTagสินค้า',
-                  product_tag_id: {
-                        number:'กรอกแต่ตัวเลขเท่านั้น',
-                        required: 'กรุณากรองรหัสtagสินค้า',
-                    },
-                },
-                errorElement: 'div',
-                errorPlacement: function ( error, element ){
-                    error.addClass( 'invalid-feedback' )
-                    error.insertAfter( element )
-                },
-                highlight: function ( element, errorClass, validClass ){
-                    $( element ).addClass( 'is-invalid' ).removeClass( 'is-valid' )
-                },
-                unhighlight:function ( element, errorClass, validClass ){
-                    $( element ).addClass( 'is-valid' ).removeClass( 'is-invalid' )
-                }
-            });
-        })
-</script>

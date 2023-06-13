@@ -65,12 +65,12 @@ $row9=mysqli_fetch_array($res9);
               <p>สินค้า</p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="../news" class="nav-link <?php echo $name == 'news' ? 'active': '' ?>">
               <i class="fa fa-newspaper nav-icon"></i>
               <p>News</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="../payment" class="nav-link <?php echo $name == 'payment' ? 'active': '' ?>">
             <i class="fas fa-credit-card nav-icon"></i>
@@ -79,13 +79,13 @@ $row9=mysqli_fetch_array($res9);
           </li>
           <li class="nav-item">
             <a href="../orders" class="nav-link <?php echo $name == 'orders' ? 'active': '' ?>">
-              <i class="fas fa-credit-card nav-icon"></i>
+            <i class="fas fa-shopping-cart nav-icon"></i>
               <p>การสั่งซื้อ</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="../product_tag" class="nav-link <?php echo $name == 'product_tag' ? 'active': '' ?>">
-              <i class="fas fa-credit-card nav-icon"></i>
+            <i class="fas fa-shopping-bag nav-icon"></i>
               <p>ประเภทสินค้า</p>
             </a>
           </li>

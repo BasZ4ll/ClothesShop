@@ -13,7 +13,7 @@
 
             if($res){
                
-                echo '<script>alert("เพิ่มTagสินค้าสำเร็จแล้ว") </script>';
+                echo '<script>alert("เพิ่มประเภทสินค้าสำเร็จแล้ว") </script>';
                header('Refresh:0; url=index.php');//สำเร็จ
             }else{
                 echo $sql;
