@@ -17,13 +17,7 @@
         if(isset($_POST['submit'])){ 
                 // local->6LeaDNoUAAAAAEUCbWoFCVYuZZGwC5NiSssuhRUk
                 // domain->6LezDdoUAAAAAIvIq6NQ8lo2s44WHqVXp6RHfUyo
-                $secretKey = "6LezDdoUAAAAAIvIq6NQ8lo2s44WHqVXp6RHfUyo";
-                $responseKey = $_POST['g-recaptcha-response'];
-                $remoteIP = $_SERVER['REMOTE_ADDR'];
-                $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$remoteIP";
-                $response = json_decode(file_get_contents($url));
 
-                if($response->success){
                     $check_sql="SELECT * FROM members WHERE mem_username= '".$mem_username."' ";
                     $check_username= $conn->query($check_sql) or die($conn->error);
                 
@@ -38,10 +32,6 @@
                             redirect('index');
                     }
 
-                }else{
-                    echo "<script> alert('Verification Failed');</script>";
-                    redirect('index');
-                }
             } else{
                 redirect('index');
         }

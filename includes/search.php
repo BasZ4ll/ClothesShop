@@ -1,120 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
 <style>
-html, body{
-  padding: 0px;
-  overflow: auto;
-  margin: 0px;
+.carousel-item {
+      height: 50vh;
+    }
+.card {
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ width: 100%;
+ height: 100%;
 }
-.sizemanage{
-  margin-top: -40px;
+.footer-cta {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+.price {
+  color: #263238;
+  font-size: 24px;
 }
 
-#sidebar {
-  top:180px;
-  z-index: 2000;
-  position: fixed;
-  width: 200px;
-  left: -200px;
-  transition: all 250ms linear;
-  background-color:white;
-  opacity : 0.9;
+.card-title {
+color:#263238
 }
-#sidebar.active{
-	left:0px;
+
+.badge {
+  background-color: #4CAF50
 }
-#sidebar  {
-  padding: 3px 16px 3px 16px;
-	color:black；
-  
+
+.sale {
+  color: #E53935
 }
-#sidebar a{
-  padding: 0px 1px 6px 0px;
-  text-decoration: none;
-  font-size: 25px;
+
+.sale-badge {
+  background-color: #E53935
+}
+
+.btn {
+    background-color: #607D8B; 
+    color: black; 
+    border: 2px solid #607D8B;
+}
+
+.btn:hover {
+
+    background-color: #fff;
+    color: black;
+}
+
+.imgm {
+    max-width: 100%;
+    width: 300px;
+  }
+
+
+/* Styles for the modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* Center the modal vertically and horizontally */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+/* Close button style */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
   color: black;
-
-  display: block;
-}
-#sidebar a input{
-  padding: 6px 8px 6px 16px;
-  font-size: 18px;
-}
-.setting{
-  padding: 3px 3px 2px 1px;
-  font-size: 15px;
-  color:black;
-
- 
-}
-#sidebar .toggle-btn{
-  background-color: white;
-  padding: 6px 6px 6px 6px;
-	position:absolute;
-	left:200px;
-	top:-35px;
-}
-.settings{
-  background-color: white;
-    padding: 16px 16px 16px 16px;
-    width: 240px;
-    margin-top: -40px;
-    margin-left: -20px;
-    font-size:15px;
-    color:black;
-}
-#sidebar .toggle-btn span{
-	display:block;
-	width:25px;
-	height:5px;
-	background:#151719;
-	margin: 5px 0px;
-}
-.searching{
-  background-color:#cecece;;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
+<?php include("php/connect.php"); ?>
+<?php
+if(isset($_POST['submit'])){
+$sql2="SELECT * FROM product WHERE product_name LIKE '%".$_POST['search']."%'";
+$res=mysqli_query($conn,$sql2);
+}else{
+  $productTag = $_GET['product_tag'];
+  $sql = "SELECT * FROM product WHERE product_tag = '$productTag'";
+  $res = mysqli_query($conn, $sql);
+}
+  
+?>
 
-<body>
-<div id="sidebar"class="sizemanage">
-<div class="settings" >     Quick Bars
-    <div class="toggle-btn" onclick="toggleSidebar()">
-      <span></span>
-      <span></span>
-      <span></span>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<div class="container ">
+
+<br><br>
+<?php include('cateta.php') ?> 
+  <div class="row">
+
+    <?php while ($row = mysqli_fetch_array($res)) { ?>
+      <?php
+   $a = $row['product_price'];  //ราคาสินค้า 
+   $b = $row['product_discount'];   //ส่วนลด 5%
+   
+   $discount = $a*$b/100;  //คำนวณส่วนลด
+  $price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
+?>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card" data-toggle="modal" data-target="#myModal<?php echo $row["product_id"]; ?>">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="assets/image/store/<?php echo $row["product_image"] ?>" alt="Card image cap"
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                <?php if ($row['product_discount'] > 0) { ?>
+                  <h5><span class="badge ms-2">ลด <?php echo $row['product_discount']; ?> %</span></h5>
+                  <?php } else { ?>
+                  <?php } ?>
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="" class="text-reset">
+              <h5 class="card-title mb-2"><?php echo $row["product_name"]; ?></h5>
+            </a>
+            <a href="" class="text-reset ">
+              <p><?php echo $row["product_tag"]; ?></p>
+            </a>
+            <?php if ($row['product_discount'] > 0) { ?>
+            <a class="text-reset"><s><?php echo number_format($row['product_price'], 2) ?> บาท</s></a>
+            <h6 class="mb-3 price"><?php echo number_format($price, 2) ?> บาท</h6>
+            <?php } else { ?>
+              <br><br>
+            <h6 class="mb-3 price"><?php echo number_format($row['product_price'], 2) ?> บาท</h6>
+            <?php } ?>
+          </div>
+            <form action="includes/addcart.php" method="post">
+                    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                    <button type="submit" class="btn btn-sm btn-block" style="padding-top: 15px;padding-bottom: 15px;" name="addcart"><i class="fas fa-shopping-cart fa-1x"></i> Add To Cart </button>
+            </form>
+        </div>
+      </div>
+      <!-- Modal -->
+
+          <div class="modal" id="myModal<?php echo $row["product_id"]; ?>">
+            <!-- Modal content -->
+            <div class="modal-content">
+ 
+                <div class="gallery__hero">           
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <img class="imgm" src="assets/image/store/<?php echo $row["product_image"] ?>">
+                </div>
+              <h3><?php echo $row["product_name"]; ?></h3>
+              <p><?php echo $row["product_detail"]; ?></p>
+              <h2><?php 
+                            echo " ";
+                            echo number_format($row['product_price'], 2);
+                            echo " ";
+                            echo $baht; ?></h2>
+                        <br>
+            </div>
+          </div>
+      <?php } ?>
     </div>
   </div>
-  <div class="sidenav navbar-expand-lg" id="sidebarleft">
- 
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a><label style="padding:3px"> <b>SMARTWATCH</b></label></a>
-  <a><label>ค้นหา</label><input type="text" class="form-control searching"id="search"></a>
-  <a><label>แบรนด์สินค้า</label></a>
-  <div class="nav-left form-check form-check-inline setting">
-    <input class="form-check-input" type="checkbox">
-    <label class="form-check-label" for="inlineCheckbox1">Nike</label>
-    &nbsp;<input class="form-check-input" type="checkbox">
-    <label class="form-check-label" for="inlineCheckbox1">Adidas</label>
-  </div>
-  <div class="nav-left form-check form-check-inline setting">
-    <input class="form-check-input" type="checkbox">
-    <label class="form-check-label" for="inlineCheckbox1">Converse</label>
-  </div>
-</div>
-
-</div>
-</body>
-</html>
-<script>
-function toggleSidebar() {
-  document.getElementById("sidebar").classList.toggle('active');
-}
-</script>

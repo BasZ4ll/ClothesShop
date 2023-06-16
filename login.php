@@ -1,3 +1,11 @@
+
+<style>
+    .modal-dialog
+    {
+        max-width: 100%;
+    }
+</style>
+
 <div class="modal fade" id="mySignin">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -13,7 +21,7 @@
         <form class="form" method="post" action="php/check_login.php">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                                 </div>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="<?php echo $lusername ?>" required>
                             </div>

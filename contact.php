@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="node_modules/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-    <title>ClothesShop</title>
+    <title>D-Day Shop</title>
 </head>
 <style>
     body{
@@ -66,23 +66,35 @@
 </style>
 <?php 
 require_once 'config.php';
-include('includes/navbar.php')?>
+include('includes/navbar.php')?><br><br><br>
+
 <body>
     <!-- The Modal -->
-    <br><br> <br><br><br>
+    <br><br> <br>
     <div class="container card-5">
       <br>
-        <h3><center>เกี่ยวกับเรา</center></h3><br>
-        <div class="row">
-  <div class="col-6 col-md-4 border border-secondary rounded card-3"><center><h5>ติดต่อ</h5><?php echo $faddress."<br>".$femail."<br>". $ftel ?></center></div>
-  <div class="col-6 col-md-4 border border-secondary rounded card-3"><center><h5><?php echo$history ?></h5></center><?php echo$historys ?></div>
-  <div class="col-6 col-md-4 border border-secondary rounded card-3"><center><h5><?php echo$Service ?></h5><?php echo $Freeshipping."<br>".$Support24hr."<br>".$CashonDelivery ?></center></div><br>
-  <div class="col-12 "><br><h5><center><?php echo $map?></center></h5><img style="width:1100px"src="assets/image/map.png "></div>
- 
-  
-</div> <br>
+        <h1><center>ติดต่อเรา</center></h1><br>
+        <div class="col-md-12 text-center">            
+            <img src="logo.png" width="200" height="200" alt="logo"><br><br>
+            <Center><h2>D-Day Shop</h2></Center>
+            <p>เว็บไซต์ขายเสื้อผ้าออนไลน์</p>
+
+            <i class="fa fa-phone" aria-hidden="true"></i>  เบอร์โทรศัพท์ :  02-123-4567<br>
+            <i class="fa fa-envelope" aria-hidden="true"></i>  อีเมล : d-day@gmail.com<br>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>  16/5 ม.12 ต.ร่อนพิบูลย์ อ.ร่อนพิบูลย์ จ.นครศรีธรรมราช<br>
+            <br>
+
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://line.me/R/ti/p/%40ddayshop"><i class="fab fa-line fa-2x"></i></a>
+            <a href="https://www.twitter.com/"><i class="fab fa-twitter-square fa-2x"></i></a>
+            </p>
+            <br><br><br><br>
+            
+        </div>
+
     </div>
-    <br> <br>
+    <br> <br><br><br>
  <?php 
  include('includes/footer.php'); ?>
 <script src="node_modules/jquery/dist/jquery.min.js"></script><!--เรียกjquery -->

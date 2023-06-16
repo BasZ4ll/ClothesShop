@@ -29,6 +29,9 @@
                   <div class="input-group-text"><i class="fas fa-at"></i></div>
                   </div>
                   <input type="email" class="form-control" id="mem_email" name="mem_email" placeholder="<?php echo $gemail?>">
+              </div>
+
+              <div class="input-group mb-2 mr-sm-2">
                   <div class="input-group-prepend">
                   <div class="input-group-text"><i class="fas fa-phone"></i></div>
                   </div>
@@ -37,7 +40,7 @@
 
               <div class="input-group mb-2 mr-sm-2">
                   <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-user"></i></div>
+                  <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
                   </div>
                   <input type="text" class="form-control" id="mem_username" name="mem_username" placeholder="<?php echo $lusername?>">
               </div>
@@ -58,20 +61,11 @@
 
 
               <div class="input-group mb-2 mr-sm-2">
-              <div class="input-group-text"><i class="fas fa-address-card size-7"></i></i></div>
-                <textarea name="mem_address" rows="3" class="form-control"></textarea>
+              <div class="input-group-text"><i class="fas fa-home size-7"></i></i></div>
+                <textarea name="mem_address" rows="3" class="form-control" placeholder="ที่อยู่"></textarea>
               </div>
 
-
-              <div class="form-group mb-2 mr-sm-2">
-                  <center>  
-                    <!-- localhost-》6LeaDNoUAAAAAED1fOQQkl9VrcwT2ZxB_sKgs7X4 -->
-                    <!-- worawin。tk -》6LezDdoUAAAAAKzer766-7kq-7rCZ1A2V18TkPRC -->
-                      <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LezDdoUAAAAAKzer766-7kq-7rCZ1A2V18TkPRC"></div>
-                  </center>
-              </div>
-
-              <button type="submit" name="submit" disabled id="submit" class="btn btn-success btn-block mb-2"><?php echo $signup?></button>
+              <button type="submit" name="submit" id="submit" class="btn btn-success btn-block mb-2"><?php echo $signup?></button>
               <span class="float-right"><?php echo $signin?><a href="login.php" data-toggle="modal" data-target="#mySignin" data-dismiss="modal"><?php echo $click?></span></a>
               </form>
 

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="node_modules/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-    <title>SmartWatch Shop</title>
+    <title>ClothesShop</title>
 </head>
 <style>
     body{
@@ -24,13 +24,13 @@
 require_once 'config.php';
 include('includes/navbar.php')?>
     <!-- The Modal -->
-    <br><br> <br><br>
+    <br><br> 
     
  <?php 
  include('includes/slidephoto.php');
 ?>
 <br><br>
-<?php include('news.php');?>
+
 
 <?php  include('includes/storemini.php');?>
 
@@ -174,7 +174,7 @@ include('includes/navbar.php')?>
                 }
             });
         })
-        function recaptchaCallback(){//เปิดปุ่มเมื่อมีการกันบอทแล้ว
+        function recaptchaCallback(){
             $('#submit').removeAttr('disabled');
         }
     </script>

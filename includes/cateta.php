@@ -32,9 +32,11 @@ $sql=$conn->query('SELECT DISTINCT product_tag FROM product WHERE product_tag = 
       </ul>
 
       <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 12rem">
-        <input type="search" class="form-control rounded-0" id="search" placeholder="Search" aria-label="Search">
-      </form>
+      <form class="d-flex input-group w-auto" action="stores_search.php" method="post">
+        <input type="search" class="form-control" placeholder="ค้นหาสินค้า" aria-label="Search" name="search" />
+        <button class="btn btn-outline-light" type="submit" name="submit">
+          <i class="fas fa-search"></i>
+        </button>
 
     </div>
   </div>
