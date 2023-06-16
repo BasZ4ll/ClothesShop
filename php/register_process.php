@@ -15,8 +15,6 @@
         $mem_address = $_POST['mem_address'];
         $mem_create_at = date('Y-m-d');
         if(isset($_POST['submit'])){ 
-                // local->6LeaDNoUAAAAAEUCbWoFCVYuZZGwC5NiSssuhRUk
-                // domain->6LezDdoUAAAAAIvIq6NQ8lo2s44WHqVXp6RHfUyo
 
                     $check_sql="SELECT * FROM members WHERE mem_username= '".$mem_username."' ";
                     $check_username= $conn->query($check_sql) or die($conn->error);
