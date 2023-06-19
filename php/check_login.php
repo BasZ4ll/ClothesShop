@@ -20,11 +20,14 @@ require_once('connect.php');
 			$_SESSION["mem_status"] = $row["mem_status"];
 			$_SESSION['mem_address']= $row["mem_address"];
 
-			if($_SESSION["mem_status"]=="admin"){
+			if ($_SESSION["mem_status"] == "admin") {
 				header("location:../assets/admin/pages/index.php");
-			}else{
+			} elseif ($_SESSION["mem_status"] == "employee") {
+				header("location:../assets/admin/pages/index.php");
+			} else {
 				header('location:../index.php');
 			}
+			
 		}else{
 			echo ("<script LANGUAGE='JavaScript'>
         window.alert(' Password ไม่ถูกต้อง');

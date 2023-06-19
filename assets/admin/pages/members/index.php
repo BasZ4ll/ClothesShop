@@ -1,8 +1,16 @@
 <?php include_once('../authen.php') ?>
 <?php 
 include_once('../../connect.php');
+
+if(isset($_SESSION['mem_status']) && $_SESSION['mem_status']=='admin'){
   $sql="select * from members";
   $res=mysqli_query($conn,$sql);
+  $i=1;
+}else{
+  $sql="select * from members where mem_status='user'";
+  $res=mysqli_query($conn,$sql);
+  $i=1;
+}
 ?>
 <style>
 .successa {
@@ -87,26 +95,35 @@ include_once('../../connect.php');
           <table id="dataTable" class="table table-bordered table-striped w-100 ">
             <thead>
             <tr>
-              <th>ID.</th>
+              <th>#</th>
               <th>ชื่อผู้ใช้</th>
               <th>ชื่อ</th>
               <th>นามสกุล</th>
               <th>อีเมล</th>
               <th>เบอร์โทร</th>
               <th>สถานะ</th>
-              <th></th>
+              <th><?php if($_SESSION['mem_status']=="admin"){ ?><a href="form-insert.php" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> เพิ่มข้อมูล</a><?php } ?></th>
             </tr>
             </thead>
             <tbody>
             <?php while($row=mysqli_fetch_array($res)) { ?>
               <tr>
-                <td><?php echo $row['mem_id']; ?></td>
+                
+                <?php $row['mem_id']; ?>
+                <td><?php echo $i++; ?></td>
                 <td><?php echo $row['mem_username']; ?></td>
                 <td><?php echo $row['mem_fname']; ?></td>
                 <td><?php echo $row['mem_lname']; ?></td>
                 <td><?php echo $row['mem_email']; ?></td>
                 <td><?php echo $row['mem_tel']; ?></td>
-                <td><h5><label class="<?php if($row['mem_status']=="admin"){echo "badge badge-success";}else{echo "badge badge-info";}?>"> <?php echo $row['mem_status']; ?> </label></h5></td>
+                <td><?php if($row['mem_status']=="admin"){ ?>
+                  <h4  class="badge badge-warning text-dark">แอดมิน</h4>
+                  <?php } if($row['mem_status']=="user"){ ?>
+                  <h4  class="badge badge-info text-dark">สมาชิก</h4>
+                  <?php } if($row['mem_status']=="employee"){ ?>
+                  <h4  class="badge badge-success text-dark">พนักงาน</h4>
+                  <?php } ?>
+                </td>
                 <td>
                   <a href="form-edit.php?mem_id=<?php echo $row['mem_id']; ?>" class="btn btn-sm btn-warning text-white">
                     <i class="fas fa-edit"></i> แก้ไข
@@ -115,7 +132,7 @@ include_once('../../connect.php');
                     <i class="fas fa-trash-alt"></i> ลบ</a>
                 </td>
               </tr>
-            <?php } ?>
+            <?php }  ?>
             </tbody>
           </table>
         </div>

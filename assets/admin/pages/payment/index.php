@@ -2,7 +2,7 @@
 <?php 
 include_once('../../../../includes/function.php');
 include_once('../../connect.php');
-  $sql="SELECT* FROM payment,members,orders where members.mem_id  and payment.mem_id=members.mem_id and orders.order_id = payment.order_id";
+  $sql="SELECT* FROM payment,members,orders where members.mem_id  and payment.mem_id=members.mem_id and orders.order_id = payment.order_id and payment_status='ตรวจสอบ'";
   $res=mysqli_query($conn,$sql);
 
 ?>
@@ -97,7 +97,7 @@ if(isset($_REQUEST['status'])){
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title d-inline-block">รายการการชำระเงิน</h3>
+          <h3 class="card-title d-inline-block">รายการที่ต้องตรวจสอบ	</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -201,6 +201,54 @@ if(isset($_REQUEST['status'])){
       </div>
       <!-- /.card -->
 
+<?php 
+
+  $sql="SELECT* FROM payment,members,orders where members.mem_id  and payment.mem_id=members.mem_id and orders.order_id = payment.order_id and payment_status='ชำระเรียบร้อย'";
+  $res=mysqli_query($conn,$sql);
+
+?>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title d-inline-block">รายการที่ชำระเรียบร้อย</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="dataTable" class="table table-bordered table-striped w-100 ">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>ORDER ID</th>
+              <th>ชื่อ</th>
+              <th>ราคา</th>
+              <th>ที่อยู่</th>
+              <th>เบอร์โทร</th>
+              <th>สถานะการโอน</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $i=1; while($row=mysqli_fetch_array($res)) { ?>
+              <tr>
+                <td><?php echo $i; ?></td>
+                <td><a href="../../../../print_payment.php?order_number=<?php echo $row['order_number']; ?>"target="_blank" ><?php echo $row['order_number']; ?></td>
+                <td><?php echo $row['mem_fname']." ".$row['mem_lname']; ?></td>
+                <td><?php echo $row['payment_price']; ?></td>
+                <td><?php echo $row['mem_address']; ?></td>
+                <td><?php echo $row['mem_tel']; ?></td>
+                <td><?php echo $row['payment_status']; ?></td>
+                <td>
+                  <a href="delete.php?payment_id=<?php echo $row['payment_id']?>" onClick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่');" class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt"></i> ลบ</a>
+                </td>
+              </tr>
+
+            <?php $i++;} ?>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
     </section>
     <!-- /.content -->
   </div>

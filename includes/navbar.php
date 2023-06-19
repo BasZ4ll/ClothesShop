@@ -30,9 +30,10 @@ $sqlcount="SELECT COUNT(*) AS carttotal FROM `cart` WHERE mem_id = '$mem_id'";
 $ressultcount=mysqli_query($conn,$sqlcount);
 $rowcount=mysqli_fetch_array($ressultcount);
 $_SESSION['carttotal']=$rowcount['carttotal'];
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
-  <a class="navbar-brand " href="index.php"> ClothesShop </a>
+  <a class="navbar-brand " href="index.php"> D-DAY SHOP </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,7 +49,7 @@ $_SESSION['carttotal']=$rowcount['carttotal'];
         <a class="nav-link" href="stores.php"> <?php echo $store?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about.php"><?php echo $about?> </a>
+        <a class="nav-link" href="contact.php">ติดต่อเรา </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="orderhistory.php"><?php echo $orderhistory?> </a>
@@ -81,7 +82,13 @@ $_SESSION['carttotal']=$rowcount['carttotal'];
         $i=1;
         while($row=mysqli_fetch_array($result)){
           ?>
-        
+              <?php
+   $a = $row['product_price'];  //ราคาสินค้า 
+   $b = $row['product_discount'];   //ส่วนลด 5%
+   
+   $discount = $a*$b/100;  //คำนวณส่วนลด
+  $price = $a-$discount;  //ราคาสินค้าหลังหักส่วนลด
+?>
         <table  width="270"> 
         <tr>
         
@@ -97,7 +104,7 @@ $_SESSION['carttotal']=$rowcount['carttotal'];
           </td>
          
           <td style="font-size:14px;width:70px;color:black">
-          <?php echo number_format($row['product_price'],2)." "."$baht";?>
+          <?php echo number_format($price,2)." "."$baht";?>
           </td>
           <td align=center width="20px">
           <a href="includes/delcart.php?cart_id=<?php echo $row['cart_id']?>" class="delcart"style="font-size:23px"><i class="fas fa-times" style="color:red"></i></a>
@@ -128,7 +135,7 @@ $_SESSION['carttotal']=$rowcount['carttotal'];
         <a class="nav-link" href="stores.php"><?php echo $store ?> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about.php"><?php echo $about ?> </a>
+        <a class="nav-link" href="contact.php">ติดต่อเรา </a>
       </li>
     </ul>
     

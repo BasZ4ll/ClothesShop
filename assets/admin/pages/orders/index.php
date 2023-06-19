@@ -1,7 +1,7 @@
 <?php include_once('../authen.php') ?>
 <?php 
 include_once('../../connect.php');
-  $sql="select * from orders";
+  $sql="select * from orders order by order_id desc";
   $res=mysqli_query($conn,$sql);
   $i=1;
 ?>

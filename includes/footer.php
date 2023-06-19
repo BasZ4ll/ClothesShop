@@ -9,18 +9,7 @@
       <!-- Grid row -->
       <div class="row">
 
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3 center">
 
-          <!-- Content -->
-          <h5 class="text-uppercase text-black font-weight-bold "><?php echo $Service ?></h5>
-          <ul class="text-dark">
-          <li><?php echo $Freeshipping ?></li>
-          <li><?php echo $Support24hr ?></li>
-          <li><?php echo $CashonDelivery ?></li>
-          </ul>
-
-        </div>
         <!-- Grid column -->
 
         <hr class="clearfix w-100 d-md-none pb-3">
@@ -46,7 +35,7 @@
     <!-- Footer Text -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 bg-light text-dark font-weight-bold">© 2023 Copyright
+    <div class="footer-copyright text-center py-3 bg-light text-dark font-weight-bold"> D-DAY SHOP
     </div>
     <!-- Copyright -->
 

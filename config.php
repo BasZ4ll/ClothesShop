@@ -17,9 +17,9 @@ if($lang == 'th')
     $Support24hr = "ดูแลตลอด 24 ชัวโมง";
     $CashonDelivery = "เก็บเงินปลายทาง";
     $Contact = "ติดต่อ";
-    $faddress = "บ้านบึง ชลบุรี 20220";
-    $femail = "info@example.com";
-    $ftel = "+ 01 234 567 88";
+    $faddress = "16/5 ม.12 ต.ร่อนพิบูลย์ อ.ร่อนพิบูลย์ จ.นครศรีธรรมราช";
+    $femail = "d-day@gmail.com";
+    $ftel = "02-123-4567";
     $lusername = "ชื่อผู้ใช้";
     $lpassword = "รหัสผ่าน"; 
     $click = " คลิ๊ก";
@@ -58,7 +58,7 @@ if($lang == 'th')
     $user="ชื่อผู้ใช้งาน";
     $name="ชื่อ";
     $lname="นามสกุล";
-    $mail="อีเมลล์";
+    $mail="อีเมล";
     $tel="เบอร์โทรศัพท์";
     $add="ที่อยู่";
 

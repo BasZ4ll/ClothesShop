@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin Management</title>
+  <title>D-DAY SHOP</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicons -->
@@ -53,70 +53,49 @@
     </section>
     <?php 
   include_once('../../connect.php');
-  $mem_id=$_GET['mem_id'];
-  $sql1="select * from members where mem_id = $mem_id";
-  $res1=mysqli_query($conn,$sql1);
-  $row1=mysqli_fetch_assoc($res1);
 ?>
     <!-- Main content -->
     <section class="content">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">แก้ไขข้อมูล</h3>
+          <h3 class="card-title">เพิ่มข้อมูล</h3>
         </div>
    
-        <form role="form" action="update.php" method="post">
+        <form role="form" action="insert.php" method="post">
           <div class="card-body">
             <div class="form-row">
               <div class="form-group col-md-4">
-              <input type="text" class="form-control" id="mem_id" name="mem_id" value="<?php echo $row1['mem_id']=$mem_id?>" hidden>
-              <input type="text" class="form-control" id="mem_username" name="mem_username" value="<?php echo $row1['mem_username']?>" hidden>
                   <label for="mem_username">ชื่อผู้ใช้</label>
-                  <input type="text" class="form-control" id="mem_username" name="mem_username" value="<?php echo $row1['mem_username']?>" disabled>
+                  <input type="text" class="form-control" id="mem_username" name="mem_username" value="" >
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="mem_password">รหัสผ่าน</label>
+                  <input type="password" class="form-control" id="mem_password" name="mem_password" value="" >
               </div>
               <div class="form-group col-md-4">
                   <label for="mem_fname">ชื่อ</label>
-                  <input type="text" class="form-control" id="mem_fname" name="mem_fname" value="<?php echo $row1['mem_fname']?>">
+                  <input type="text" class="form-control" id="mem_fname" name="mem_fname" value="">
               </div>
               <div class="form-group col-md-4">
                   <label for="mem_lname">นามสกุล</label>
-                  <input type="text" class="form-control" id="mem_lname" name="mem_lname" value="<?php echo $row1['mem_lname']?>">
+                  <input type="text" class="form-control" id="mem_lname" name="mem_lname" value="">
               </div>
               <div class="form-group col-md-4">
                   <label for="mem_email">อีเมล</label>
-                  <input type="email" class="form-control" id="mem_email" name="mem_email"  value="<?php echo $row1['mem_email']?>">
+                  <input type="email" class="form-control" id="mem_email" name="mem_email"  value="">
               </div>
 
               <div class="form-group col-md-4">
                   <label for="mem_tel">เบอร์โทร</label>
-                  <input type="text" class="form-control" id="mem_tel"  name="mem_tel" value="<?php echo $row1['mem_tel']?>">
+                  <input type="text" class="form-control" id="mem_tel"  name="mem_tel" value="">
               </div>
               <div class="form-group col-md-4">
                   <label for="mem_status">สถานะ</label>
                   <select name="mem_status" id="mem_status" class="form-control">
-                  <?php 
-                  $sqldata="Select * from members where mem_id=$mem_id";
-                  $rese2=mysqli_query($conn,$sqldata);
-                  $row2=mysqli_fetch_assoc($rese2);
-                  ?>
-                  <?php if($row2['mem_status'] == 'admin'){?>
-                    <option value="admin" selected>admin</option>
-                    <option value="user">user</option>
-                    <option value="employee">employee</option>
-                  <?php }else if($row2['mem_status'] == 'user'){?>
-                    <option value="admin">admin</option>
-                    <option value="user" selected>user</option>
-                    <option value="employee">employee</option>
-                  <?php }else if($row2['mem_status'] == 'employee'){?>
-                    <option value="admin">admin</option>
-                    <option value="user">user</option>
-                    <option value="employee" selected>employee</option>
-                  <?php }?>
-                  
-                  
 
-
-  
+                  <option value="user" >ลูกค้า</option>
+                  <option value="employee">พนักงาน</option>
+                  <option value="admin">แอดมิน</option>
                   </select>
                   <?php    
                   ?>
@@ -125,12 +104,12 @@
 
             <div class="form-group">
                 <label for="mem_address">ที่อยู่</label>
-                <textarea class="form-control" id="mem_address" name="mem_address"  rows="5"> <?php echo $row1['mem_address']?></textarea>
+                <textarea class="form-control" id="mem_address" name="mem_address"  rows="5"></textarea>
             </div>
 
           </div>
           <div class="card-footer">
-          <a href="form-edit.php?mem_id=<?php echo $row1['mem_id']?>" class="btn btn-warning float-left">ย้อนกลับ</a>
+          <a href="index.php" class="btn btn-warning float-left">ย้อนกลับ</a>
           <input type="submit" name="submit" class="btn btn-primary float-right" value="บันทึกข้อมูล">
           </div>
         </form>

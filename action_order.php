@@ -6,8 +6,11 @@
 // echo '<pre>',print_r($_REQUEST),'</pre>';
 // echo '<pre>',print_r($_SESSION),'</pre>';
 // echo '<pre>',print_r($_SESSION['summy']),'</pre>';
+
 $mem_id =$_SESSION['mem_id'];
-$datetime=date("Y-m-d H:i:s");
+date_default_timezone_set('Asia/Bangkok'); 
+$datetime = date("Y-m-d H:i:s"); // รับเวลาปัจจุบันในโซนเวลาที่ตั้งค่า
+
     if(isset($_REQUEST['submit'])){
         
             $order= date('dmyHis');

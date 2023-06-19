@@ -23,7 +23,7 @@
                 <div class="mask rgba-black-light"></div>
             </div>
             <div class="carousel-caption">
-                <h3 class="h3-responsive text-white">Smart</h3>
+                <h3 class="h3-responsive text-white"></h3>
             </div>
         </div>
         <div class="carousel-item">
@@ -33,7 +33,7 @@
                 <div class="mask rgba-black-strong"></div>
             </div>
             <div class="carousel-caption">
-                <h3 class="h3-responsive text-white">Cool</h3>
+                <h3 class="h3-responsive text-white"></h3>
 
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="mask rgba-black-slight"></div>
             </div>
             <div class="carousel-caption">
-                <h3 class="h3-responsive text-white">Stylish</h3>
+                <h3 class="h3-responsive text-white"></h3>
             </div>
         </div>
         <div class="carousel-item">
@@ -54,7 +54,7 @@
                 <div class="mask rgba-black-slight"></div>
             </div>
             <div class="carousel-caption">
-                <h3 class="h3-responsive text-white">test</h3>
+                <h3 class="h3-responsive text-white"></h3>
             </div>
         </div>
     </div>

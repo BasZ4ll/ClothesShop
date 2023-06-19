@@ -32,7 +32,7 @@ $row9=mysqli_fetch_array($res9);
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <span class="brand-text font-weight-light text-center d-block">Admin Management</span>
+      <span class="brand-text font-weight-light text-center d-block">D-DAY SHOP</span>
     </a>
 
     <!-- Sidebar -->
