@@ -26,7 +26,7 @@ Chk_Update($sql,'ยกเลิกรายการเรียบร้อย
     <link rel="stylesheet" href="node_modules/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-    <title>SmartWatch Shop</title>
+    <title>D-Day SHOP</title>
 </head>
 <style>
     body{

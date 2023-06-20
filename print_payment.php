@@ -15,7 +15,7 @@ include('config.php');
     <link rel="stylesheet" href="node_modules/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
-    <title>SmartWatch Shop</title>
+    <title>D-Day SHOP</title>
 </head>
 <style>
     body{
@@ -57,7 +57,7 @@ if($show2['order_shipping']==50){
 <br>
     <div class="container">
         <div >
-        <br><h3><center>SmartWatch</h3></center>
+        <br><h3><center>D-Day SHOP</h3></center>
         <h4><center>ใบสั่งซื้อสินค้า</h4><br></center>
 
         <center>
@@ -70,10 +70,10 @@ if($show2['order_shipping']==50){
             
             </div>
             <div class="col-sm"><div style="text-align: left;font-weight:bold;">ข้อมูลติดต่อร้าน</div>
-            <div style="text-align: left;"> ชื่อร้าน : SmartWatch</div>
-            <div style="text-align: left;">เบอร์ : 0123456788</div>
-            <div style="text-align: left;">อีเมลล์ : info@example.com</div>
-            <div style="text-align: left;">ที่อยู่ : บ้านบึง ชลบุรี 20220</div>
+            <div style="text-align: left;"> ชื่อร้าน : D-Day SHOP</div>
+            <div style="text-align: left;">เบอร์ : 02-123-4567</div>
+            <div style="text-align: left;">อีเมลล์ : d-day@gmail.com</div>
+            <div style="text-align: left;">ที่อยู่ : 16/5 ม.12 ต.ร่อนพิบูลย์ อ.ร่อนพิบูลย์ จ.นครศรีธรรมราช</div>
             
             </div>
             <div class="col-sm"><div style="text-align: left;font-weight:bold;">วันที่สั่งซื้อ : <?php echo $show2['order_date']?></div> 
